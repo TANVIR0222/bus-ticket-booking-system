@@ -5,6 +5,7 @@ CREATE TABLE "users" (
 	"email" varchar(322) NOT NULL,
 	"password" varchar(55) NOT NULL,
 	"isVerified" boolean DEFAULT false NOT NULL,
+	"salt" text NOT NULL,
 	"verificationsToken" text,
 	"refreshToken" text,
 	"resetPasswordToken" text,

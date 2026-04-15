@@ -3,34 +3,35 @@ import {
   index,
   pgTable,
   text,
-  timestamp,
   uniqueIndex,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 import { timestamps } from "./columns.helpers.js";
 
-export const users = pgTable(
+export const usersTable = pgTable(
   "users",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    firstName: varchar({ length: 255 }).notNull(),
-    lastName: varchar({ length: 255 }),
-    email: varchar({ length: 322 }).notNull().unique(),
-    password: varchar({ length: 55 }).notNull(),
+    id: uuid("id").primaryKey().defaultRandom(),
+    firstName: varchar("first_name", { length: 55 }).notNull(),
+    lastName: varchar("last_name", { length: 55 }),
+    email: varchar("email", { length: 322 }).notNull().unique(),
+    emailVerified: boolean("email_verified").default(false).notNull(),
 
-    isVerified: boolean().default(false).notNull(),
+    password: text("password").notNull(),
+
+    salt: text("salt").notNull(),
 
     verificationsToken: text(),
     refreshToken: text(),
     resetPasswordToken: text(),
 
-    resetPasswordExpires: timestamp(),
+    // resetPasswordExpires: timestamp(),
 
     ...timestamps,
   },
   (table) => [
     uniqueIndex("email_idx").on(table.email),
     index("first_name_idx").on(table.firstName),
-  ]
+  ],
 );

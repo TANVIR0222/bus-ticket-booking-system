@@ -1,6 +1,6 @@
 {
-  "id": "e9047d9c-f353-4b6a-89e9-27e54042b187",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f8025291-654e-4499-afbf-b0b4a4535abd",
+  "prevId": "e9047d9c-f353-4b6a-89e9-27e54042b187",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -15,15 +15,15 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "firstName": {
-          "name": "firstName",
-          "type": "varchar(255)",
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(55)",
           "primaryKey": false,
           "notNull": true
         },
-        "lastName": {
-          "name": "lastName",
-          "type": "varchar(255)",
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(55)",
           "primaryKey": false,
           "notNull": false
         },
@@ -33,48 +33,24 @@
           "primaryKey": false,
           "notNull": true
         },
-        "password": {
-          "name": "password",
-          "type": "varchar(55)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "isVerified": {
-          "name": "isVerified",
+        "email_verified": {
+          "name": "email_verified",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
           "default": false
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         },
         "salt": {
           "name": "salt",
           "type": "text",
           "primaryKey": false,
           "notNull": true
-        },
-        "verificationsToken": {
-          "name": "verificationsToken",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "refreshToken": {
-          "name": "refreshToken",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "resetPasswordToken": {
-          "name": "resetPasswordToken",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "resetPasswordExpires": {
-          "name": "resetPasswordExpires",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -110,7 +86,7 @@
           "name": "first_name_idx",
           "columns": [
             {
-              "expression": "firstName",
+              "expression": "first_name",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
