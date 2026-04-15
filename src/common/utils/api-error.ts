@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from "../constants/http.status.codes.js";
+import HTTP_STATUS from "../constants/http.status.codes.js";
 
 class ApiError extends Error {
   public statusCode: number | null;
